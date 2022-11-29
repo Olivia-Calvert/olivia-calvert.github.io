@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Terrain Generation &amp; Animation - Olivia Calvert's Portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="../index.html">Portfolio</a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="index.html">Home</a></li>
+								<li><a href="credits.html">Credits</a></li>
+								<li><a href="projects.html">Projects</a></li>
+								<li><a href="CV.html">CV</a></li>
+								<li><a href="contact.html">Contact</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Terrain Generation &amp; Animation</h2>
+								<div>
+									<iframe width="1210" height="680.625" src="https://www.youtube.com/embed/B3WsnSn69xg" title="Terrain Generation & Animation Framework | Year 3 - Semester 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+								</div>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+									<h3 class="major">Details</h3>
+									<p>This framework is a demonstration of terrain generation, skinning and animation techniques I learned in my final year of university.  It is written in C++/HLSL, and uses DirectX 11, <a href="https://github.com/ocornut/imgui">Dear ImGui</a>, and <a href="https://github.com/leethomason/tinyxml2">tinyxml2</a> to support it.</p>
+									
+									<p>The terrain generation uses any of the Diamond-Square, Fault-Line or Hill algorithms, with configurable height, variation, and iterations (for Hill only) parameters.  Additionally, I implemented a voxeliser and mesh generator, which convert the output from any of the algorithms to a singular voxelised mesh per chunk.  Defaults for all of these and more are also configurable in loadable xml files.</p>
+									
+									<p>For voxelised terrain, I also use Perlin noise to create Perlin worms in the terrain to form caves.  For non-voxelised terrain, the application automatically uses tessellation shaders, which also handle LODs for the terrain based on distance to the camera.</p>
+									
+									<p>The animation uses custom .skl (xml format) files to represent the bone structure for a model.  Modified .obj files feed the skinning data into this, and .xml files are used to represent animations.  I opted for this approach over something that natively supports animation, such as .fbx or collada, because it afforded me the opportunity to learn exactly how animation data fits together to influence a mesh.  However, this is not something I would repeat in future due to the lack of tooling I had to support my homebrew formats.  In my application, the animations are represented as key-frame transforms and the rigged mesh is represented by a left-child right-sibling binary tree.  Transforms are processed per-bone in the update loop, and my vertex shaders handle the rest.</p>
+									
+									<h3 class="major">Gallery</h3>
+									<div id="modalGallery" class="modal">
+										<img class="modal-content" id="img01">
+										<div id="modalClose"></div>
+									</div>
+									<div class="box alt">
+										<div class="row gtr-uniform">
+											<div class="col-4"><span class="image fit"><img class="modalImg" src="../images/projects/tgsa/image01.jpg" alt="" /></span></div>
+											<div class="col-4"><span class="image fit"><img class="modalImg" src="../images/projects/tgsa/image02.jpg" alt="" /></span></div>
+											<div class="col-4"><span class="image fit"><img class="modalImg" src="../images/projects/tgsa/image03.jpg" alt="" /></span></div>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+
+					</section>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="inner">
+							<h2 class="major">Get in touch</h2>
+							<p>If you like what you see, have any questions or just fancy a chat, please do not hesitate to get in touch!</p>
+							<ul class="contact">
+								<li class="fa-envelope"><a href="mailto:omcalvert@outlook.com">Email</a></li>
+								<li class="fa-youtube"><a href="https://www.youtube.com/channel/UCcbLsyuOgNhnnDKSNi93aFw/" target="_blank">YouTube</a></li>
+								<li class="fa-linkedin"><a href="https://www.linkedin.com/in/olivia-calvert" target="_blank">LinkedIn</a></li>
+								<li class="fa-steam"><a href="https://steamcommunity.com/id/Xephea/" target="_blank">Steam</a></li>
+							</ul>
+							<ul class="copyright">
+								<li>Copyright &copy; 2022 - Olivia Calvert. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>
