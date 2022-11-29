@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Ray-Tracer - Olivia Calvert's Portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="../index.html">Portfolio</a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="index.html">Home</a></li>
+								<li><a href="credits.html">Credits</a></li>
+								<li><a href="projects.html">Projects</a></li>
+								<li><a href="CV.html">CV</a></li>
+								<li><a href="contact.html">Contact</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Ray-Tracer</h2>
+								<div>
+									<video width="1210" height="680.625" controls controlslist="nodownload noplaybackrate" autoplay disablepictureinpicture loop>
+										<source src="../assets/res/projects/llgp/_render.mp4" type="video/mp4"/>
+									</video>
+								</div>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+									<h3 class="major">Details</h3>
+									<p>I created this application in my final year of university.  The brief was to optimise a CPU-based ray-tracer on Windows, implement a method of driving it through data, and port it to Linux</p>
+									
+									<p>I started by optimising the data structures.  I switched the frame renderer to use 3D Vector, Ray, and byte-array colour structures to minimise the amount of conversions required.  Next, I found that the renderer was writing each frame to the output stream pixel by pixel.  I batched these into a single call for further improvement.  Further CPU and memory profiling revealed numerous smaller possible optimisations throughout.</p>
+									
+									<p>Once I had implemented all the basic optimisations, I implemented a memory manager to detect any memory leaks and patched each individually.  I further improved this by implementing memory pools for various types, including the sphere used as scene objects.  Finally, I spent some time making the ray-tracer thread-safe before implemented a thread pool.  This was fully generic so it could be re-used elsewhere if necessary, and fully configurable as to how many threads were in the pool at any time, though it defaulted to one thread per CPU core on the host machine.</p>
+									
+									<p>On Linux, I used pre-processor directives to change this behaviour due to the difference in parallelism on the different OS.  Instead, I opted to use process forking, which provided comparable results.</p>
+									
+									<p>All-in-all, these optimisations brought the render times for a 1080p animation down by an average of 90%!</p>
+									
+									<p>To assist with development, and fulfil the second criteria, I used WPF and C# to create a standalone GUI-driven application that could generate animation data, including saving/loading this data from file, and then run the ray-tracer.  It used command-line arguments to point to the necessary data file and provide an output directory.  This meant I could detect when the render was complete and automatically open the output video.</p>
+									
+									<h3 class="major">Gallery</h3>
+									<div id="modalGallery" class="modal">
+										<img class="modal-content" id="img01">
+										<div id="modalClose"></div>
+									</div>
+									<div class="box alt">
+										<div class="row gtr-uniform">
+											<div class="col-4"><span class="image fit"><img class="modalImg" src="../images/projects/llgp/image01.jpg" alt="" /></span></div>
+											<div class="col-4"><span class="image fit"><img class="modalImg" src="../images/projects/llgp/image02.jpg" alt="" /></span></div>
+											<div class="col-4"><span class="image fit"><img class="modalImg" src="../images/projects/llgp/image03.jpg" alt="" /></span></div>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+
+					</section>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="inner">
+							<h2 class="major">Get in touch</h2>
+							<p>If you like what you see, have any questions or just fancy a chat, please do not hesitate to get in touch!</p>
+							<ul class="contact">
+								<li class="fa-envelope"><a href="mailto:omcalvert@outlook.com">Email</a></li>
+								<li class="fa-youtube"><a href="https://www.youtube.com/channel/UCcbLsyuOgNhnnDKSNi93aFw/" target="_blank">YouTube</a></li>
+								<li class="fa-linkedin"><a href="https://www.linkedin.com/in/olivia-calvert" target="_blank">LinkedIn</a></li>
+								<li class="fa-steam"><a href="https://steamcommunity.com/id/Xephea/" target="_blank">Steam</a></li>
+							</ul>
+							<ul class="copyright">
+								<li>Copyright &copy; 2022 - Olivia Calvert. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>
